@@ -395,31 +395,12 @@ export default function LoginPage() {
                   <div className="h-px bg-white/10 flex-1"></div>
                </div>
 
-               <button
+               <button 
                   onClick={handleGoogleLogin}
                   className="w-full py-4 bg-white text-black hover:bg-white/90 rounded-xl font-bold text-sm flex items-center justify-center gap-3 transition-transform hover:scale-[1.02] shadow-xl"
                >
                   <Image src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google Logo" width={18} height={18} />
                   Google Authentication
-               </button>
-
-               <button
-                  type="button"
-                  onClick={async () => {
-                    setLoading(true);
-                    setMessage({ text: "", type: "" });
-                    const { error } = await supabase.auth.signInWithPassword({
-                      email: "demo@prepassist.com",
-                      password: "Demo@1234"
-                    });
-                    if (error) setMessage({ text: error.message, type: "error" });
-                    else window.location.href = "/dashboard";
-                    setLoading(false);
-                  }}
-                  disabled={loading}
-                  className="w-full py-4 bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 hover:from-amber-500/30 hover:to-orange-500/30 text-amber-400 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed"
-               >
-                  {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Demo Login <ArrowRight className="w-4 h-4" /></>}
                </button>
              </>
            )}
